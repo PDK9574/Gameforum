@@ -6,7 +6,7 @@
 
 ## 📽️背景切換影片
 
-![demo](./論壇圖片/背景切換.gif)
+[![背景切換影片](https://img.youtube.com/vi/FBLTp3L7tbY/0.jpg)](https://youtu.be/FBLTp3L7tbY)
 ---
 
 ## 📸 頁面截圖
