@@ -9,7 +9,7 @@
  
 }
 .container{
-  width: 1900px;
+  width: 100%;
   min-height: 100vh;
   background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("/boardimages/board1.png");
   background-position: center;
@@ -137,7 +137,7 @@ nav ul li a:hover::before{
     background-size: cover;
     display: flex;
     height: 1080px;
-    width: 1900px;
+    width: 100%;
     text-align: center;
     align-items: center;
     flex-direction: column;
