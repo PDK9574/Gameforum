@@ -4,11 +4,6 @@
 
 ---
 
-## 📽️背景切換影片
-
-[![背景切換影片](https://img.youtube.com/vi/FBLTp3L7tbY/0.jpg)](https://youtu.be/FBLTp3L7tbY)
----
-
 ## 📸 頁面截圖
 
 | 首頁 | 遊戲新聞 |
@@ -46,6 +41,12 @@
 | 即時聊天室 | 
 |-----------|
 | ![聊天室](./論壇圖片/即時聊天室.png) | 
+
+---
+
+## 📽️背景切換影片
+
+[![背景切換影片](https://img.youtube.com/vi/FBLTp3L7tbY/0.jpg)](https://youtu.be/FBLTp3L7tbY)
 
 ---
 
