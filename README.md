@@ -6,7 +6,7 @@
 
 ## 📽️ Demo 影片
 
-<!-- 把你的 .mp4 拖曳到 GitHub README 編輯器，會自動上傳產生連結，替換下方 src -->
+<!-- 把你的 .mp4 拖曳到 GitHub README 編輯器，上傳後替換下方 src -->
 <video src="你的影片連結.mp4" controls width="100%"></video>
 
 ---
@@ -15,15 +15,19 @@
 
 | 首頁 | 討論區 |
 |------|--------|
-| ![首頁](./screenshots/首頁.png) | ![討論區](./screenshots/討論區.png) |
+| ![首頁](./論壇圖片/首頁.png) | ![討論區](./論壇圖片/討論區.png) |
 
 | 登入 | 註冊 |
 |------|------|
-| ![登入](./screenshots/登入頁面.png) | ![註冊](./screenshots/註冊頁面.png) |
+| ![登入](./論壇圖片/登入頁面.png) | ![註冊](./論壇圖片/註冊頁面.png) |
 
 | 即時聊天室 | 好友系統 |
 |-----------|---------|
-| ![聊天室](./screenshots/即時聊天室.png) | ![好友](./screenshots/新增朋友功能.png) |
+| ![聊天室](./論壇圖片/即時聊天室.png) | ![好友](./論壇圖片/新增朋友功能.png) |
+
+| 討論區內部 | 文章內部 |
+|-----------|---------|
+| ![討論區內部](./論壇圖片/討論區內部.png) | ![文章內部](./論壇圖片/文章內部.png) |
 
 ---
 
@@ -78,21 +82,24 @@
 ## 📁 專案結構
 
 ```
-finalterm/
-├── app.js              # 主程式入口
-├── db.js               # 資料庫設定
-├── routes/
-│   ├── index.js        # 首頁路由
-│   ├── users.js        # 使用者路由
-│   ├── msgs.js         # 討論區路由
-│   └── mgr.js          # 管理路由
-├── views/              # EJS 模板
-├── public/
-│   ├── stylesheets/    # CSS 樣式
-│   ├── images/         # 圖片素材
-│   ├── boardimages/    # 看板背景圖
-│   └── webimages/      # 新聞縮圖
-└── package.json
+Gameforum/
+├── finalterm/          # 主要專案程式碼
+│   ├── app.js          # 主程式入口
+│   ├── db.js           # 資料庫設定
+│   ├── routes/
+│   │   ├── index.js    # 首頁路由
+│   │   ├── users.js    # 使用者路由
+│   │   ├── msgs.js     # 討論區路由
+│   │   └── mgr.js      # 管理路由
+│   ├── views/          # EJS 模板
+│   ├── public/
+│   │   ├── stylesheets/
+│   │   ├── images/
+│   │   ├── boardimages/
+│   │   └── webimages/
+│   └── package.json
+├── 論壇圖片/            # 截圖
+└── README.md
 ```
 
 ---
@@ -107,8 +114,8 @@ finalterm/
 
 ```bash
 # 1. 複製專案
-git clone https://github.com/你的帳號/finalterm.git
-cd finalterm
+git clone https://github.com/你的帳號/Gameforum.git
+cd Gameforum/finalterm
 
 # 2. 安裝套件
 npm install
