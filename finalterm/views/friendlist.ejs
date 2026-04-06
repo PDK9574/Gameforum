@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/friendlist.css">
+    <script>
+        //http://127.0.0.1:3000/users/creategroup
+    </script>
+</head>
+
+<body >
+   
+    <div class="container">
+        <div class="navbar">
+            <img src="/images/logo.png" class="logo">
+            <div class="logo-text">
+              <img src="/images/logotext.png">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/homepage"><i class="fas fa-home"></i><p>Home</p></a></li>
+                    <li><a href="/login"><i class="fas fa-sign-in-alt"></i><p>Login</p></a></li>
+                    <li><a href="/register"><i class="fas fa-registered"></i><p>Register</p></a></li>
+                    <li><a href="/users/grouplist"><i class="fas fa-users-cog"></i><p>group</p></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="sidebar">
+                <div class="sidebar-top">
+                   
+                    <div class="search">
+                    <form action="/users/searchfriend" method="POST">
+                        <input name="friendname" type="text" placeholder="search friend">
+                        <label for="search"><i class="fas fa-search"></i></label>
+                        <input  type="submit" id="search">
+                    </form>
+                    </div>
+                    
+                    <div class="users">
+                        <a href="/users/addfriend">
+                        <div class="user">
+                            <i class="fas fa-user-plus"></i>
+                            <p>add friend</p>
+                        </div>
+                        </a>
+                        <a href="/users/friendreq">
+                            <div class="user">
+                                <i class="fas fa-user-check"></i>
+                                <p>friend accept</p>
+                            </div>
+                        </a>
+                        <a href="/users/friendlist">
+                        <div class="user">
+                            <i class="fas fa-user-friends"></i>
+                            <p>friendlist</p>
+                        </div>
+                        </a>
+                       
+                        <a href="/users/grouplist">
+                        <div class="user">
+                            <i class="fas fa-users-cog"></i>
+                            <p>grouplist</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="chatmessage">
+                <div class="groupname">
+                    <p>friendlist</p>
+                </div>
+                <div class="messages">
+                    <% for(i=0;i<row.length;i++){ %>
+                        <% if (row[i]!=undefined){ %>
+                            <% if (row[i].id != user.id){ %>
+                        <div class="message">
+                            <% if(row[i]!=undefined){ %>
+                                <img src="/personimage/<%= row[i].photoname %>" alt="用戶沒圖片">
+                            <% }else { %>
+                                <img src="/images/unknown.png">
+                            <% } %>
+                            <p class="name">friend id: <%= row[i].id %></p>
+                            <p class="name">friend name: <%= row[i].username%></p>
+                            <a href="/users/deletefriend/<%= row[i].id %>"><i class="fas fa-user-minus"></i></a>
+                        </div>
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                  
+                </div>
+              
+            </div>
+
+        </div>
+    </div>
+    </div>
+     
+      
+     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function searchFriend(){
+            var friendname = {friendname:$("#friendname").val()};
+            $.ajax({
+                url: "http://127.0.0.1:3000/users/searchfriend",
+                type: "POST",
+                dataType: "json",
+                data : friendname,
+               
+                success : function(response){
+                    console.log("success");
+                },
+                error :function(){
+                    console.log("錯誤");
+                }
+
+            })
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+  <link rel='stylesheet' href="/stylesheets/navbar.css">
+  <link rel="stylesheet" href="/stylesheets/login.css">
+  <style>
+   
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar">
+      <img src="/images/logo.png" class="logo">
+      <div class="logo-text">
+        <img src="/images/logotext.png">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/homepage"><i class="fas fa-home"></i><p>Home</p></a></li>
+          <li><a href="/login"><i class="fas fa-sign-in-alt"></i><p>Login</p></a></li>
+          <li><a href="/register"><i class="fas fa-registered"></i><p>Register</p></a></li>
+          <li><a href="/users/grouplist"><i class="fas fa-users-cog"></i><p>group</p></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="rowcontent">
+        <form method="POST">
+          <div class="login">
+            <p>LOGIN</p>
+          </div>
+          <div class="content">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" id="email" placeholder="Email">
+          </div>
+          <div class="fgpd">
+            <a href="/forgotpassword">Forgot Password?</a>
+          </div>
+          <div class="content">
+            <i class="fas fa-unlock-alt"></i>
+            <input type="password" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="content">
+            <input type="submit" value="login">
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    
+    let close = document.getElementById("close");
+    let menu = document.getElementById("menu");
+    let nav = document.querySelector("nav");
+    function shut() {
+      close.classList.toggle("active")
+      menu.classList.toggle("active")
+      nav.classList.toggle("nav")
+    }
+
+    function show() {
+      menu.classList.toggle("active")
+      close.classList.toggle("active")
+      nav.classList.toggle("nav")
+    }
+    function getRandomInt(min,max){
+      return Math.round(Math.random()*(max-min+1)+min)
+    }
+    function clickEffect(e) {
+     let d = document.createElement("div");
+     d.className="clickEffect";
+     d.style.top=e.clientY+"px";d.style.left=e.clientX+"px";
+     document.body.appendChild(d);
+     d.addEventListener("animationend",function(){d.parentElement.removeChild(d);}.bind(this))
+    }
+    //document.addEventListener("click", clickEffect)
+    
+  </script>
+</body>
+
+</html>

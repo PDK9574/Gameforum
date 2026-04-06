@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update message</title>
+    <link rel="stylesheet" href="/stylesheets/create.css">
+</head>
+<body>
+    <form method="post">
+        <div class="container">
+            <div class="background">
+            </div>
+            <div class="navbar">
+                <img src="/images/logo.png" class="logo">
+                <div class="logo-text">
+                  <img src="/images/logotext.png">
+                </div>
+              
+              <div class="search">
+                <form method="POST" action="/msgs/search/<%= board %>">
+                  <input class="inputtext" type="text" name="titlevalue" placeholder="search title">
+                  <label for="search"><i class="fas fa-search"></i></label>
+                  <input type="submit" id="search">
+                </form>
+              </div>
+                <nav>
+                  <ul>
+                    <li><a href="/homepage"><i class="fas fa-home"></i><p>Home</p></a></li>
+                    <li><a href="/login"><i class="fas fa-sign-in-alt"></i><p>Login</p></a></li>
+                    <li><a href="/register"><i class="fas fa-registered"></i><p>Register</p></a></li>
+                    <li><a href="/users/grouplist"><i class="fas fa-users-cog"></i><p>group</p></a></li>
+                  </ul>
+                </nav>
+            </div>
+            <div class="topbar">
+              <div class="datas">
+                <div class="create">
+                  <a href="/msgs/create/<%= board%>">new message</a>
+                </div>
+                <div class="data">
+                  <a href="/users">userdata</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="row-image">
+                  
+                </div>
+                <div class="row-content">
+                    <div class="content-top">
+                        <article>update message</article>
+                        <p>Title</p>
+                        <input type="text" name="title" id="title" onkeyup="value=value.replace(/[\W]/g,'') "  value="<%= data.title %>" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" required> 
+                         
+                        
+                    </div>
+                 
+                  
+                    <div class="content-content">
+                      <p>content</p>
+                      <textarea name="content" id="content" cols="30" rows="80" onkeyup="value=value.replace(/[\W]/g,'') "  onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" required>
+                        <%= data.content %>
+                        </textarea>
+                    </div>
+                    <div class="content-adjust">
+                      <input type="submit" value="寫好了送出">
+                    </div>
+                    <div class="content-bottom">
+                     
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+  
+   
+</body>
+</html>

@@ -1,0 +1,304 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    overflow-x: hidden;
+   height: 250vh;
+}
+.notgood{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.3);
+    visibility: hidden;
+    z-index: 5;
+}
+.notgood p{
+  color: red;
+  font-size: 400px;
+}
+.notgood button{
+    background: red;
+    width: 300px;
+    height: 100px;
+}
+.alert{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.3);
+
+}
+.alert-box{
+   width: 300px;
+   height: 300px;
+    background: green;
+    opacity: 0;
+}
+.top-content{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url("/images/south.jpg");
+    background-size: cover;
+   
+}
+.top-title{
+    display: flex;
+    
+    position: absolute;
+    align-items: center;
+  
+    top: 0%;
+    width: 100%;
+    height: 100px;
+}
+.title-content{
+    margin-left: 200px;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 1400px;
+    transform: translateX(0px);
+    border-bottom: white solid 2px;
+    animation: title 0.5s forwards linear;
+}
+.second-title{
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+
+@keyframes title
+{
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
+.title-content p{
+  font-size: 60px;
+  color: white;
+}
+.left-texts{
+    width: 600px;
+    height: 300px;
+    margin-top: 300px;
+    margin-left: 200px;
+    animation: lefttext 0.5s forwards linear;
+}
+@keyframes lefttext 
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+    
+}
+.left-texts h1{
+    font-size: 50px;
+   color: white;
+   margin-bottom: 100px;
+}
+.left-texts p{
+    font-size: 20px;
+   color: white;
+}
+.right-image{
+    position: relative;
+    display: flex;
+    margin-top: 200px;
+    margin-left: 300px;
+    width: 500px;
+    height: 600px;
+    overflow: hidden;
+}
+.right-image::before{
+    position: absolute;
+    content: "";
+    top: 0%;
+    width:  50%;
+    height: 50%;
+    background: black;
+    animation: circle1 infinite steps(1,end) 2s;
+}
+@keyframes circle1
+{
+    0%
+    {
+        top: 0%;
+        left: 0%;
+    }
+    25%
+    {
+        top: 0%;
+        left: 50%;
+    }
+    50%
+    {
+        top: 50%;
+        left: 50%;
+    }
+    75%
+    {
+        top: 50%;
+        left: 0%;
+    }
+    100%
+    {
+        top: 0%;
+        left: 0%;
+    }
+}
+.right-image::after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width:  50%;
+    height: 50%;
+    background: black;
+    animation: circle2 infinite steps(1,end) 2s;
+}
+@keyframes circle2
+{
+    0%
+    {
+        top: 50%;
+        left: 50%;
+    }
+    25%
+    {
+        top: 50%;
+        left: 0%;
+    }
+    50%
+    {
+        top: 0%;
+        left: 0%;
+    }
+    75%
+    {
+        top: 0%;
+        left: 50%;
+    }
+    100%
+    {
+        top: 50%;
+        left: 50%;
+    }
+}
+.second-content{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url("/images/草屯警察局.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.second-right-image{
+    position: relative;
+    display: flex;
+    margin-top: 200px;
+    margin-left: 300px;
+    width: 500px;
+    height: 600px;
+    background: wheat;
+    overflow: hidden;
+}
+.second-right-image span{
+    width: 25%;
+    height: 100%;
+    background: url("/images/tsjfh.png");
+    animation: whirl 2s infinite linear;
+  
+}
+.second-right-image:hover span{
+  
+    
+}
+@keyframes whirl 
+{
+    0%
+    {
+        transform: rotateY(0deg);
+    }   
+    100%
+    {
+     transform: rotateY(360deg);   
+    }
+}
+.second-right-image span:nth-child(1){
+    background-position: 0%;
+}
+.second-right-image span:nth-child(2){
+    background-position: 33.33%;
+}
+.second-right-image span:nth-child(3){
+    background-position: 66.66%;
+}
+.second-right-image span:nth-child(4){
+    background-position: 100%;
+}
+.right-image span{
+    width: 25%;
+    height: 100%;
+    background: url("/images/tsj.png");
+   
+}
+
+.right-image span:nth-child(1){
+    background-position: 0%;
+}
+.right-image span:nth-child(2){
+    background-position: 33.33%;
+}
+.right-image span:nth-child(3){
+    background-position: 66.66%;
+}
+.right-image span:nth-child(4){
+    background-position: 100%;
+}
+.bottom-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    width: 100%;
+    height: 13%;
+    background: #f9f9f9;
+   
+}
+td a{
+    color: blue;
+    text-decoration: underline;
+}
+#blow{
+    font-size: 50px;
+    width: 200px;
+    height: 100px;
+    margin: 10px 0px 10px 0px;
+}
+.table{
+   position: relative;
+   
+  
+}

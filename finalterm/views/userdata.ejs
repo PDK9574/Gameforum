@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用者資料</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="/stylesheets/userdata.css">
+    
+        <script>
+        //上傳圖片顯示
+        function readURL(input){
+
+        if(input.files && input.files[0]){
+
+            var imageTagID = input.getAttribute("targetID");
+
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+
+            var img = document.getElementById(imageTagID);
+
+            img.setAttribute("src", e.target.result)
+
+            }
+
+            reader.readAsDataURL(input.files[0]);
+
+        }
+        }
+        //新加的    
+        </script>
+        
+            
+</head>
+
+<body>
+    <main>
+        <section class="glass">
+            <div class="dashboard">
+                <div class="user">
+                    <% if(photoname!=undefined) {%>                                                        
+                    <img src="/personimage/<%= photoname%>" width="200px" height="200px"  id="myphoto" alt="用戶沒圖片">
+                    <% }else{ %>
+                    <img src="/defaultimages/unknown.png" width="200px" height="200px"  id="myphoto">
+                    <% } %>
+                    <form id="image-form" method="POST" action="/users/savephoto" enctype="multipart/form-data">
+                        <input type="file" name="myfile" id="myfile" onchange="readURL(this)" targetID="myphoto" accept="image/gif, image/jpeg, image/png" >                            
+                        <input type="submit" value="儲存圖片">
+                    </form>                           
+                </div>
+                <div class="links">
+                <form action="/users/save" method="post"> 
+                    <div class="link">                                            
+                        Name:
+                        <%= user.username %>
+                    </div>                                                    
+                    <div class="link">
+                        <img src="/images/email.png">
+                        <%= user.email %>
+                    </div>                               
+                    <div class="link">
+                        <label for="userage">Age:</label>
+                        <input type="number" name="userage" id="userage" >
+                    </div>                   
+                    <div class="link">
+                        Interest:
+                        <input type="checkbox" name="chk1" id="chk1" value="sleep" <% if(chk1=='sleep') { %>Checked <%}%>>
+                        <label for="chk1">sleep</label>
+                        <input type="checkbox" name="chk2" id="chk2" value="code" <% if(chk2=='code') { %>Checked <%}%>>
+                        <label for="chk2">write code</label>
+                        <input type="checkbox" name="chk3" id="chk3" value="eat" <% if(chk3=='eat') { %>Checked <%}%>>
+                        <label for="chk3">eat</label>
+                        <input type="checkbox" name="chk4" id="chk4" value="play" <% if(chk3=='play') { %>Checked <%}%>>
+                        <label for="chk4">play</label>                        
+                        <input type="submit" value="儲存" class="btn btn-info">
+                    </div>
+                </div>
+                <div class="pro">                   
+                    <h2>Join pro for free games</h2>
+                    <img class="pro-image"  src="/images/controller.png">
+                </div> 
+                </form>                                                               
+            </div>
+            <div class="games">
+                <div class="stauts">
+                    <a href="/users/addfriend"><h1>Add Friend</h1></a>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <img src="/images/assassins.png">
+                        <div class="card-info">
+                            <h2>Assassins creed valhalla</h2>
+                            <p>PS5 Version</p>
+                            <div id="pro1" class="progress"></div>
+                        </div>
+                        <h2 id="per1" class="percentage">40%</h2>
+                    </div>
+                    <div class="card">
+                        <img src="/images/shovel knight.png">
+                        <div class="card-info">
+                            <h2>Shovel knight</h2>
+                            <p>Nintendo 3DS Version</p>
+                            <div id="pro2" class="progress"></div>
+                        </div>
+                        <h2 class="percentage">60%</h2>
+                    </div>
+                    <div class="card">
+                        <img src="/images/Monster train.png">
+                        <div class="card-info">
+                            <h2>Monster train</h2>
+                            <p>Steam Version</p>
+                            <div id="pro3" class="progress"></div>
+                        </div>
+                        <h2 class="percentage">80%</h2>
+                    </div>
+                </div>           
+            </div>
+        </section>
+    </main>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /* prevent submit  e.preventDefault();
+         
+        var ImageForm = document.getElementById("image-form");
+        ImageForm.addEventListener('submit',(e) => {
+            e.preventDefault();
+            console.log("default success");
+        })
+        */
+        
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/grouplist.css">
+    <script>
+        //http://127.0.0.1:3000/users/creategroup
+    </script>
+  
+</head>
+
+<body >
+   
+    <div class="container">
+        <div class="navbar">
+            <img src="/images/logo.png" class="logo">
+            <div class="logo-text">
+              <img src="/images/logotext.png">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/homepage"><i class="fas fa-home"></i><p>Home</p></a></li>
+                    <li><a href="/login"><i class="fas fa-sign-in-alt"></i><p>Login</p></a></li>
+                    <li><a href="/register"><i class="fas fa-registered"></i><p>Register</p></a></li>
+                    <li><a href="/users/grouplist"><i class="fas fa-users-cog"></i><p>group</p></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="sidebar">
+                <div class="sidebar-top">
+                   
+                    <div class="search">
+                    <form action="/users/searchfriend" method="POST">
+                        <input name="friendname" type="text" placeholder="search friend">
+                        <label for="search"><i class="fas fa-search"></i></label>
+                        <input  type="submit" id="search">
+                    </form>
+                    </div>
+                    
+                    <div class="users">
+                        <a href="/users/addfriend">
+                        <div class="user">
+                            <i class="fas fa-user-plus"></i>
+                            <p>add friend</p>
+                        </div>
+                        </a>
+                        <a href="/users/friendreq">
+                            <div class="user">
+                                <i class="fas fa-user-check"></i>
+                                <p>friend accept</p>
+                            </div>
+                        </a>
+                        <a href="/users/friendlist">
+                        <div class="user">
+                            <i class="fas fa-user-friends"></i>
+                            <p>friendlist</p>
+                        </div>
+                        </a>
+                      
+                        <a href="/users/grouplist">
+                        <div class="user">
+                            <i class="fas fa-users-cog"></i>
+                            <p>grouplist</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar-bottom">
+                    <input id="openpage" type="button" value="create group">
+                </div>
+            </div>
+            <div class="chatmessage">
+                <div class="groupname">
+                    <p>grouplist</p>
+                </div>
+                <div class="messages">
+                    <% for(i=0;i<newrow.length;i++){ %>
+                        <% if (newrow[i]!=undefined){ %>
+                    <div class="message">
+                      
+                        <p class="name">groupname:<%= newrow[i].name %></p>
+                        
+                        <p class="name">users:<%= newrow[i].value %></p>
+                        <p class="name">grouphostid:<%= newrow[i].hostid%></p>
+                        <form action="/users/group/<%= newrow[i].name %>" method="GET">
+                            <input type="submit" value="enter">
+                        </form>
+                    </div>
+                        <% } %>
+                    <% } %>
+                  
+                </div>
+              
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="create-page">
+        <div class="page-contents">
+            <form method="POST" action="/users/creategroup">
+                <div class="page-close">
+                    <i id="page-close" class="fas fa-times"></i>
+                </div>
+                <div class="page-name">
+                    <div class="name-content">
+                    <text>Group name:</text>
+                    <input id="gname" name="gname" type="text" required>
+                    </div>
+                </div>
+                <div class="page-content">
+                        
+                        <% for(i=0;i<row.length;i++){ %>
+                        <% if (row[i]!=undefined){ %>
+                        <div class="friend-content">
+                        <img src="/personimage/<%= row[i].photoname %>" alt="can't find image">
+                        <text >friend name:<%= row[i].username%></text>
+                        <label class="s" for="friend<%= row[i].id %>">
+                        <input class="friend" name="members" id="friend<%= row[i].id %>"  type="checkbox" value="<%= row[i].id %>" >  
+                        <span class="s1"></span> 
+                        </label>
+                      
+                        </div>
+                        <% } %>
+                        <% } %>
+                        
+                    
+                </div>
+                <div class="page-submit">
+                    <div class="submit-content">
+                        <input id="submit-create" type="submit" value="create">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script>
+        $("#openpage").click(function(){
+            $(".create-page").css("visibility","visible");
+           
+        })
+        $("#page-close").click(function(){
+            $(".create-page").css("visibility","hidden");
+        })
+        $("#submit-create").click(function(e) {
+            var checkfriend = false;
+            var friend=$(".friend");
+                for(var i = 0;i<friend.length;i++){
+                    if(friend[i].checked){
+                        checkfriend = true;
+                    }
+                }
+            if(checkfriend){
+              
+            }else{
+                e.preventDefault()
+                alert("please choose at least one friend")
+            }
+        })
+       
+    </script>
+      
+   
+   
+</body>
+
+</html>

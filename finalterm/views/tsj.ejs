@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/tsj.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="alert">
+        <div class="alert-box">
+
+        </div>
+    </div> 
+    <div class="notgood">
+      
+            <p>給我吹!!!!</p>
+            <button id="return" class="btn btn-danger">繼續吹</button>
+    </div>
+    <div class="top-content">
+        <div class="top-title">
+            <div class="title-content">
+                <p>南投縣文章管理系統</p>
+            </div>
+        </div>
+        <div class="left-texts">
+            <h1>台灣優秀傑出青年　不說謊、不犯罪、不口交</h1>
+            <p>身為一名專業打擊口交惡徒的人士,時常需要面對各種被口交的風險，努力、奮鬥、不洩的田勝傑，是年經人們的未來，是保護台灣不受口交惡徒侵害的有為青年</p>
+        </div>
+        <div class="right-image">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="second-content">
+        <div class="second-title">
+           
+        </div>
+        <div class="left-texts">
+            <h1>捍衛兒少隱私，小小警員，大大權力</h1>
+            <p>小小年紀所向無敵 神秘公權力
+                雙手壓頭強制口爆 實在好神奇
+                
+                捍衛兒子維護個資叫他第一名
+                田jay~
+                
+                口交暴徒性侵同學 超級bad bad bad
+                警局專人管制留言 超級任務讚
+                施壓巴哈抹除事件 台灣黑暗面
+                
+                田Jay!
+                
+                跟著小傑一起去吹吹吹
+                老爸壓案他一定不怕累
+                學校封口一直到她畢業
+                
+                我們都愛這超酷南投小英雄
+                
+                田 Jay!
+                口交獸
+                局長戰神
+                南投人
+                旭光之星
+                施壓霸王
+                大官威
+                小奇莖
+                陰影</p>
+        </div>
+        <div class="second-right-image">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="bottom-row">
+        <input id="blowvalue" type="hidden" value="0">
+        <input id="realblow" type="hidden" value="<%= row.blow %>">
+        <p id="time"></p>
+        <p>累積吹吹次數:<%= row.blow %></p>
+        <p>吹15次即可刪文</p>
+        <button id="blow" class="btn btn-danger">blow</button>
+        
+        <form method="POST">
+            <label for="boardid">boardid</label>
+            <input  id="boardid" name="boardid">
+            
+            <input id="serach" type="submit">
+        </form>
+        <button id="alert">go to top</button>
+    </div>
+        
+        
+        
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">title</th>
+                <th scope="col">content</th>
+                <th scope="col">report</th> 
+                <th scope="col">delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(i=0;i<rows.length;i++){ %> 
+            <tr>
+                <th scope="row"><%= rows[i].id %></th>
+                <td> <%= rows[i].title %></td>
+                <td> <%= rows[i].content %></td>
+                <td> <%= rows[i].report %></td>
+                <td><a id="del" href="http://127.0.0.1:3000/mgr/delete/<%= boardid %>/<%= rows[i].id %>">delete</a></td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener("scroll",function(){
+            $(".notgood").css("top",window.scrollY);
+        })
+        $("#alert").click(function(e){
+            $('html,body').animate({ scrollTop: 0 }, 'slow'); 
+        })
+       
+       
+        
+        let count =0;
+        var isClick = true;
+        $("#blow").click(function(){
+            var data ={blow: $("#blowvalue").val()};
+            let time = document.getElementById("time");
+            count++;
+            time.innerHTML ="當前吹次數:"+count;
+            
+            if(isClick){
+                isClick=false;
+                $("#blow").attr("disabled",true);
+                $.ajax({
+                    url: "http://127.0.0.1:3000/mgr/blow",
+                    type : "POST",
+                    data : data,
+                    success: function(){
+                    console.log("success");
+                    },
+                    error:function(){
+                        console.log("err");
+                    }
+                })
+                setTimeout(function(){
+                    isClick = true;
+                    $("#blow").attr("disabled",false);
+                },1000)
+            }
+        })
+        let del = document.getElementById("del");
+        del.addEventListener("click",function(e){
+            let blowbd = $("#realblow").val();
+            if(blowbd<15){
+                $(".notgood").css("visibility","visible");
+                e.preventDefault();
+            }
+        })
+        $("#return").click(function(){
+            $(".notgood").css("visibility","hidden");
+        })
+        
+          
+       
+    </script>
+   
+</body>
+</html>

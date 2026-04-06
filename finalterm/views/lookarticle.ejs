@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--star css top-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href='/stylesheets/star.css'>
+    <link rel="stylesheet" href="/stylesheets/lookarticle.css">
+    <script type="text/javascript">
+        //點擊次數計算
+        var click = 0;
+        function getClick() {
+            click = click + 1;
+            document.getElementById("clicktimes").value = click;
+           
+        }
+        //star css down
+        //article
+        var time=0;
+        function getAClick() {
+            time++
+            alert(time);
+            times = document.getElementById("times");
+            times.value = time;
+            alert(times.value);
+        }
+    </script>
+    <!--share facebook-->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v9.0"
+        nonce="8BkTQ00m"></script>
+    <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async"
+        defer="defer"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="background">
+        </div>
+        <div class="navbar">
+            <img src="/images/logo.png" class="logo">
+            <div class="logo-text">
+              <img src="/images/logotext.png">
+            </div>
+          
+          <div class="search">
+            <form method="POST" action="/msgs/search/<%= id %>">
+              <input class="inputtext" type="text" name="titlevalue" placeholder="search title">
+              <label for="search"><i class="fas fa-search"></i></label>
+              <input type="submit" id="search">
+            </form>
+          </div>
+            <nav>
+              <ul>
+                <li><a href="/homepage"><i class="fas fa-home"></i><p>Home</p></a></li>
+                <li><a href="/login"><i class="fas fa-sign-in-alt"></i><p>Login</p></a></li>
+                <li><a href="/register"><i class="fas fa-registered"></i><p>Register</p></a></li>
+                <li><a href="/users/grouplist"><i class="fas fa-users-cog"></i><p>group</p></a></li>
+              </ul>
+            </nav>
+        </div>
+        <div class="topbar">
+          <div class="datas">
+            <div class="create">
+              <a href="/msgs/create/<%= id %>">new message</a>
+            </div>
+            <div class="data">
+              <a href="/users">userdata</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="row-image">
+                <img src="/personimage/<%= photo.photoname %>" alt="找不到圖片">
+            </div>
+            <div class="row-content">
+                <div class="content-top">
+                    <article>Title : </article>
+                    <p><%= title %></p>
+                </div>
+                <div class="content-name">
+                    <div class="imgbox">
+                        <img src="/images/author.png">
+                    </div>
+                    <p><%= writer.username %></p>
+                    
+                    <i class="fas fa-clock"></i>
+                    <p><%= writer.createdtime  %></p>
+                    <div class="score">
+                        <p>score click :<%= click %></p>
+                        
+                        <p>score :<%= (rating/allrate.length).toFixed(2) %></p>
+                        
+                        
+                    </div>
+                </div>
+                <div class="content-time">
+                    <article>last updated time:</article>
+                    <p> <%= lastupdatedtime %></p>
+                </div>
+                <div class="content-content">
+                    <p><%= content %></p>
+                </div>
+                <div class="content-adjust">
+                        
+                    <% if (author==userid){ %>
+                        
+                        <a href="/msgs/edit/<%= board %>/<%= id %>"><i class="fas fa-edit"></i><p>edit</p></a>
+                        <i id="del"  class="fas fa-trash-alt"><p>delete</p></i>
+                    <% } %>
+                        <i id="report" class="fas fa-exclamation-triangle"><p>report</p></i>
+                </div>
+                <div class="content-bottom">
+                    <form method="POST">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"
+                                title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half"
+                                title="Pretty good - 4.5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"
+                                title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half"
+                                title="Meh - 3.5 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"
+                                title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half"
+                                title="Kinda bad - 2.5 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"
+                                title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half"
+                                title="Meh - 1.5 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"
+                                title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf"
+                                title="Sucks big time - 0.5 stars"></label>
+                        </fieldset>
+                        <!--score save button-->
+                        <input type="submit" name="save" id="save" value="submit" onclick="getClick()">
+                        <!--return-->
+                        <input type="hidden" id="times" name="times" value="0">
+                        <input type="hidden" id="clicktimes" name="click" value="0">
+                    </form>
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-href="http://127.0.0.1:8000/msgs/lookarticle/<%= board%>/<%= id %>" data-width="" data-layout="button"
+                        data-action="like" data-size="small" data-share="true"></div>
+                    <!--share line article-->
+                        <!--share fb article data href = URL in this page-->
+                    <div class="line-it-button" data-lang="zh_Hant" data-type="share-b" data-ver="3"
+                        data-url="http://127.0.0.1:8000/msgs/lookarticle/<%= board%>/<%= id %>" data-color="default" data-size="small"
+                        data-count="false" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar-top">
+                    <div class="trangle-side">
+                    </div>
+                    <p>Recommend</p>
+                </div>
+            
+                <div class="sidebar-block-content">
+                    <img src="/images/loop hero.png">
+                    <a href="https://www.pcgamer.com/loop-hero-boss-secret-first-rewards/">Loop Hero boss guide: How to defeat them all, and the rewards you get</p>
+                    </a>
+                </div>
+                <div class="sidebar-block-content">
+                    <img src="/images/monster.jpg">
+                    <a href="https://www.monsterhunter.com/world-iceborne/hk/topics/at-velkhana/">Free major update fifth bullet Post attention activity tasks "The King of Fighting Bing Yulong" is here!</p>
+                    </a>
+                    
+                </div>
+                <div class="sidebar-block-content">
+                    <img src="/images/black survival eternal return.jpg">
+                    <a href="https://playeternalreturn.com/tcn/">"Eternal Reincarnation" is a unique and exciting all-round multiplayer survival game</p>
+                    </a>
+                </div> 
+                <input id="board" type="hidden" value="<%= board %>">
+                <input id="id" type="hidden" value="<%= id %>">
+            </div> 
+        </div>
+    </div>
+   <script>
+        let del =document.getElementById("del");
+        let id = document.getElementById("id").value;
+        let board = document.getElementById("board").value;
+        del.addEventListener("click",function(){
+            var flag = confirm("are you sure?");
+            if(flag){
+                window.location.href=`/msgs/delete/${board}/${id}`;
+            }else{
+                alert("cancel");
+            }
+       
+        })
+        let report = document.getElementById("report");
+        report.addEventListener("click",function(){
+            var flag = confirm("are you sure?");
+            if(flag){
+                window.location.href=`/msgs/report/${board}/${id} `;
+            }else{
+                alert("cancel");
+            }
+       
+        })
+   </script>
+
+    
+   
+  
+</body>
+
+</html>

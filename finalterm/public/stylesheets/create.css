@@ -1,0 +1,336 @@
+@import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+p{
+    font-size: 20px;
+     font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+}
+.container{
+  
+  width: 100%;
+  height: 1300px;
+   
+  box-sizing: border-box;
+}
+.background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1800px;
+    background: url(https://i2.bahamut.com.tw/html_bg.gif) center top #F9F9F9;
+    z-index: -5;
+}
+.navbar{
+    background:linear-gradient(to right top,#145AD9,#5081DA);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-shadow: 2px 2px 60px black;
+    overflow: hidden;
+ }
+.logo{
+    height: 60px;
+    width: 160px;
+    cursor: pointer;
+    margin-left: 6rem;
+}
+.navbar img{
+    height: 60px;
+    width: 60px;
+}
+.logo-text{
+    margin-left: 30px;
+}
+.logo-text img{
+    height: 30px;
+    width: 80px;
+
+
+
+}
+.inputtext{
+    margin-left: 50px;
+    outline: none;
+    background: white;
+    border-radius: 2rem;
+    padding: 5px;
+}
+#search{
+    display: none;
+}
+
+nav{
+    flex: 1;
+    text-align: right;
+    margin-right: 10rem;
+
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+}
+nav ul li a{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    border-right: 1.5px solid black;
+    padding: 20px 40px;
+    text-decoration: none;
+
+}
+
+nav ul li a img{
+    width: 40px;
+
+
+}
+nav ul li a i{
+
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+}
+nav ul li a p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color:white;
+    text-decoration: none;
+    font-size: 10px;
+}
+
+nav ul li a::before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    transition: 0.2s;
+
+    z-index: 5;
+}
+nav ul li a:hover::before{
+    opacity: 0.2;
+    background:#0A97F0;
+    width: 100%;
+    height: 100%;
+}
+.topbar {
+    display: flex;
+    background: #4A40FF;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 40px;
+    box-shadow: 1px 1px 3px black;
+}
+.topbar a{
+    text-decoration: none;
+    color: white;
+
+}
+.create{
+    position: absolute;
+    top: 78px;
+    right: 150px;
+
+}
+.data{
+    position: absolute;
+    top: 78px;
+    right: 20px;
+}
+.row{
+    background:linear-gradient(#F9F9F9);
+    display: flex;
+    height: 120%;
+    width: 100%;
+    text-align: center;
+}
+.row-image{
+    margin-top: 90px;
+    margin-left: 200px;  
+    width: 200px;
+    height: 200px;
+   
+    
+}
+.row-content{
+    margin-top: 90px;
+    margin-left: 100px;  
+    width: 800px;
+    height: 1300px;
+    background: white;
+    box-shadow: 1px 1px 5px 3px gray;
+}
+.content-top{
+    display: flex;
+    align-items: center;
+
+    width: 720px;
+    height: 50px;
+    margin: 20px 40px 0px  40px;
+
+    border-bottom: 2px solid gray;
+}
+.content-top article{
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 30px;
+}
+.content-top p{
+    margin-left: 30px;
+    font-size: 30px;
+}
+.content-name{
+    display: flex;
+    align-items: center;
+    width: 720px;
+    height: 30px;
+    margin: 10px 40px 0px  40px;
+
+}
+.imgbox{
+    position: relative;
+    display: flex;
+    align-items:flex-end;
+    height: 30px;
+}
+.imgbox:hover:after{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 100%;
+    left: 100%;
+    content: "author name";
+    width: 120px;
+    height: 30px;
+    color: white;
+    background: #0A97F0;
+    border-radius: 20px;
+}
+.content-name .imgbox img{
+    width: 25px;
+    height: 25px;
+}
+
+.content-name i {
+    margin-left: 10px;
+    position: relative;
+}
+.content-name i:hover:after {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 100%;
+    left: 100%;
+    color: white;
+    content: "created time";
+    width: 100px;
+    height: 30px;
+    background: #0A97F0;
+    border-radius: 20px;
+    font-size: 15px;
+}
+.score{
+    display: flex;
+    margin-left: 200px;
+}
+.score p{
+
+    margin-left: 20px;
+}
+
+.content-time{
+    display: flex;
+    align-items: center;
+    width: 720px;
+    height: 30px;
+    margin: 0px 40px 0px  40px;
+
+}
+
+.content-time article{
+    font-size: 15px;
+
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+}
+.content-time p{
+    font-size: 15px;
+
+
+}
+.content-content{
+    display: flex;
+   
+    flex-direction: column;
+    height: 950px;
+    width: 720px;
+    margin: 50px 40px 20px  40px;
+
+}
+.content-adjust{
+    display: flex;
+    justify-content: flex-end;
+    margin: 60px 40px 0px  40px;
+}
+.content-adjust a{
+    margin-right: 50px;
+    text-decoration: none;
+    color: black;
+}
+.content-adjust a i{
+
+    font-size: 20px;
+}
+.content-adjust input{
+    background: #0A97F0;
+    outline: none;
+    width: 100px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    color: white;
+    font-size: 20px;
+  
+}
+.content-adjust input:hover{
+    background:#5081DA ;
+}
+.content-bottom{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 720px;
+    margin: 0px 40px 0px  40px;
+   
+}
+.content-bottom form input[type="submit"]{
+    background: linear-gradient(to right top,#145AD9,#5081DA);
+    color: white;
+    width: 60px;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 0.2px black;
+}
+.content-bottom form{
+    margin-right: 300px;
+}
