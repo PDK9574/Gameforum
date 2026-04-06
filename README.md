@@ -6,8 +6,7 @@
 
 ## 📽️背景切換影片
 
-<video src="論壇圖片/背景切換.mp4" controls width="100%"></video>
-![issues tab]
+![demo](./論壇圖片/背景切換.gif)
 ---
 
 ## 📸 頁面截圖
