@@ -4,10 +4,9 @@
 
 ---
 
-## 📽️ Demo 影片
+## 📽️背景切換影片
 
-<!-- 把你的 .mp4 拖曳到 GitHub README 編輯器，上傳後替換下方 src -->
-<video src="你的影片連結.mp4" controls width="100%"></video>
+<video src="背景切換.mp4" controls width="100%"></video>
 
 ---
 
